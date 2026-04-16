@@ -12,7 +12,7 @@ export function Footer() {
               Offensive Security Professional
             </span>
           </div>
-          
+
           <div className="flex gap-4">
             <a
               href="https://github.com/yourusername"
@@ -41,11 +41,11 @@ export function Footer() {
             </a>
           </div>
         </div>
-        
+
         <div className="mt-8 border-t pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Ruwantha Harshamal. All rights reserved.</p>
           <div className="flex gap-4">
-            <span>Built with Next.js & Tailwind CSS</span>
+            <span>Built @knight99</span>
           </div>
         </div>
       </div>
