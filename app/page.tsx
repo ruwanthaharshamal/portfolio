@@ -10,24 +10,24 @@ export default function Home() {
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary mb-8 font-medium">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-            Trainee Information Security Consultant @ Trustvault
+            Information Security Consultant
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl">
             Offensive Security Professional & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Red Teamer</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10">
-            Specializing in web, API, network, and Active Directory penetration testing. 
+            Specializing in web, API, network, and Active Directory penetration testing.
             Passionate about securing critical systems and breaking things to make them stronger.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Link 
-              href="/about" 
+            <Link
+              href="/about"
               className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
               About Me
             </Link>
-            <Link 
-              href="/writeups" 
+            <Link
+              href="/writeups"
               className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
               Read Writeups
@@ -42,7 +42,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold tracking-tight mb-4">Core Expertise</h2>
           <div className="h-1 w-20 bg-primary rounded-full"></div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="flex flex-col items-start p-6 rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md">
             <div className="p-3 rounded-lg bg-primary/10 text-primary mb-4">
@@ -53,7 +53,7 @@ export default function Home() {
               Deep expertise in OWASP Top 10, advanced injection attacks, logic flaws, and modern web framework vulnerabilities.
             </p>
           </div>
-          
+
           <div className="flex flex-col items-start p-6 rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md">
             <div className="p-3 rounded-lg bg-blue-500/10 text-blue-500 mb-4">
               <ShieldAlert className="h-6 w-6" />
@@ -63,7 +63,7 @@ export default function Home() {
               Internal/external VAPT, firewalls review, endpoint security, and real-world attack simulations.
             </p>
           </div>
-          
+
           <div className="flex flex-col items-start p-6 rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md">
             <div className="p-3 rounded-lg bg-green-500/10 text-green-500 mb-4">
               <Lock className="h-6 w-6" />
@@ -73,7 +73,7 @@ export default function Home() {
               Advanced AD enumeration, privilege escalation paths, lateral movement, and post-exploitation.
             </p>
           </div>
-          
+
           <div className="flex flex-col items-start p-6 rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md">
             <div className="p-3 rounded-lg bg-purple-500/10 text-purple-500 mb-4">
               <Terminal className="h-6 w-6" />
