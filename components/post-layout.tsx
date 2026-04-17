@@ -11,7 +11,7 @@ export default async function DynamicPostPage({
   backUrl,
   backTitle
 }: {
-  params: { slug: string }
+  params: { slug: string | string[] }
   type: string
   backUrl: string
   backTitle: string

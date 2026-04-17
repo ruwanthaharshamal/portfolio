@@ -3,6 +3,7 @@ title: "Active Directory Privilege Escalation: From AS-REP Roasting to Domain Ad
 date: "2025-12-05T09:15:00Z"
 tags: ["ad", "privilege-escalation", "red-teaming", "kerberos"]
 description: "A walkthrough of a common but deadly attack path in Active Directory starting with AS-REP roasting and ending in complete domain compromise."
+platform: "Hack The Box"
 ---
 
 ## Reconnaissance & Initial Foothold

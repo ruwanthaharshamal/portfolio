@@ -3,6 +3,7 @@ title: "Bypassing WAF: Reflected XSS in E-Commerce Search Parameter"
 date: "2025-10-15T10:00:00Z"
 tags: ["xss", "bugbounty", "websec", "waf-bypass"]
 description: "A detailed walkthrough on discovering a Reflected Cross-Site Scripting (XSS) vulnerability that bypassed an initial WAF filter using clever encoding."
+platform: "PicoCTF"
 ---
 
 ## Overview

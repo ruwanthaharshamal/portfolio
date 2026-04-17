@@ -11,18 +11,31 @@ export interface PostMeta {
   tags: string[]
   description: string
   type: 'writeups' | 'blog' | 'projects' | 'tools'
+  platform?: string
 }
 
 export interface Post extends PostMeta {
   content: string
 }
 
-export function getPostBySlug(type: string, slug: string): Post | null {
+export function getPostBySlug(type: string, slug: string | string[]): Post | null {
   try {
-    const realSlug = slug.replace(/\.md$/, '')
+    const slugPath = Array.isArray(slug) ? slug.join('/') : slug
+    const realSlug = slugPath.replace(/\.md$/, '')
     const fullPath = path.join(contentDirectory, type, `${realSlug}.md`)
+    
+    if (!fs.existsSync(fullPath)) return null
+
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
+
+    // Infer platform from directory if not explicitly in frontmatter
+    let inferredPlatform = data.platform
+    if (!inferredPlatform && Array.isArray(slug) && slug.length > 1) {
+      // Use the first directory as the platform name (e.g. htb/post -> HTB)
+      const folder = slug[0]
+      inferredPlatform = folder.length <= 4 ? folder.toUpperCase() : folder.charAt(0).toUpperCase() + folder.slice(1)
+    }
 
     return {
       slug: realSlug,
@@ -31,11 +44,32 @@ export function getPostBySlug(type: string, slug: string): Post | null {
       tags: data.tags || [],
       description: data.description || '',
       type: type as "writeups" | "blog" | "projects" | "tools",
+      platform: inferredPlatform,
       content,
     }
   } catch {
     return null
   }
+}
+
+function getFilesRecursively(dir: string, baseDir: string = dir): string[] {
+  let results: string[] = []
+  const list = fs.readdirSync(dir)
+  
+  list.forEach((file) => {
+    const fullPath = path.join(dir, file)
+    const stat = fs.statSync(fullPath)
+    
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getFilesRecursively(fullPath, baseDir))
+    } else if (file.endsWith('.md')) {
+      // Get the relative path from the base directory
+      const relativePath = path.relative(baseDir, fullPath)
+      results.push(relativePath.replace(/\\/g, '/')) // Use forward slashes for slugs
+    }
+  })
+  
+  return results
 }
 
 export function getAllPosts(type: string): PostMeta[] {
@@ -45,12 +79,13 @@ export function getAllPosts(type: string): PostMeta[] {
       return []
     }
     
-    const slugs = fs.readdirSync(directory)
-    const posts = slugs
-      .filter((slug) => slug.endsWith('.md'))
-      .map((slug) => {
-        const post = getPostBySlug(type, slug)
-        // Extract just the metadata to keep it light
+    const filePaths = getFilesRecursively(directory)
+    const posts = filePaths
+      .map((filePath) => {
+        // Pass slug as an array for nested directories
+        const slugArray = filePath.replace(/\.md$/, '').split('/')
+        const post = getPostBySlug(type, slugArray)
+        
         if (post) {
           const { content: _, ...meta } = post
           return meta
@@ -59,7 +94,6 @@ export function getAllPosts(type: string): PostMeta[] {
       })
       .filter(Boolean) as PostMeta[]
       
-    // Sort posts by date, descending
     return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
   } catch (error) {
     console.error(`Error reading directory ${type}:`, error)

@@ -11,7 +11,7 @@ function getShiki() {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
       themes: ['github-dark', 'github-light'],
-      langs: ['javascript', 'typescript', 'python', 'bash', 'json', 'yaml', 'html', 'css', 'go', 'rust', 'c', 'cpp'],
+      langs: ['javascript', 'typescript', 'python', 'bash', 'json', 'yaml', 'html', 'css', 'go', 'rust', 'c', 'cpp', 'http', 'powershell', 'markdown'],
     });
   }
   return highlighterPromise;

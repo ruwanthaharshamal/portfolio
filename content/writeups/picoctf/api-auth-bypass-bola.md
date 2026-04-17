@@ -3,6 +3,7 @@ title: "API Authentication Bypass via Broken Object Level Authorization"
 date: "2025-11-20T14:30:00Z"
 tags: ["api", "broken-access-control", "auth-bypass", "bugbounty"]
 description: "How a missing authorization check on a critical API endpoint allowed full account takeover."
+platform: "PicoCTF"
 ---
 
 ## The Environment
