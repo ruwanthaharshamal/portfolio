@@ -22,11 +22,11 @@ export default function About() {
             </h2>
             <div className="prose prose-slate dark:prose-invert max-w-none text-muted-foreground">
               <p>
-                I am a results-driven offensive security professional with hands-on experience across vulnerability assessment, penetration testing, and security consultancy. 
-                Currently working as a Trainee Information Security Consultant at Trustvault, where I specialize in web, API, network, and Active Directory penetration testing.
+                I am a dedicated offensive security researcher and practitioner with a strong technical foundation in vulnerability assessment and adversarial simulations. 
+                Currently, as a **Trainee Information Security Consultant at Trustvault**, I focus on uncovering complex security flaws across web applications, APIs, and enterprise networks, including Active Directory environments.
               </p>
               <p>
-                My passion lies in red teaming and securing critical systems by thinking like an adversary. I continuously strive to uncover complex vulnerabilities and provide actionable remediation strategies to enhance the overall security posture of organizations.
+                My approach combines deep technical curiosity with an adversarial mindset. I am passionate about bridging the gap between theoretical vulnerabilities and real-world impact, providing organizations with the strategic insights needed to harden their defenses against modern threats.
               </p>
             </div>
           </section>

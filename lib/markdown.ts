@@ -52,7 +52,7 @@ export function getAllPosts(type: string): PostMeta[] {
         const post = getPostBySlug(type, slug)
         // Extract just the metadata to keep it light
         if (post) {
-          const { content, ...meta } = post
+          const { content: _, ...meta } = post
           return meta
         }
         return null

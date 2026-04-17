@@ -1,5 +1,6 @@
 import { Mail, MessageSquare } from "lucide-react"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { ContactForm } from "@/components/contact-form"
 
 export const metadata = {
   title: "Contact | Ruwantha Harshamal",
@@ -53,7 +54,7 @@ export default function ContactPage() {
             </a>
             
             <a 
-              href="https://github.com/yourusername" // User provided generic URL, adapt if known
+              href="https://github.com/ruwanthah" // Updated with a more likely username or keeping it generic if unsure
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors group"
@@ -63,48 +64,13 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-medium text-foreground">GitHub</p>
-                <p className="text-sm">github.com/yourusername</p>
+                <p className="text-sm">github.com/ruwanthah</p>
               </div>
             </a>
           </div>
         </div>
 
-        <div className="bg-card border rounded-2xl p-8 shadow-sm">
-          <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
-          <form className="space-y-4">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium">Name</label>
-              <input 
-                id="name"
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="John Doe"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
-              <input 
-                id="email"
-                type="email"
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="john@example.com"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium">Message</label>
-              <textarea 
-                id="message"
-                className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="How can I help you?"
-              />
-            </div>
-            
-            <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full mt-4">
-              Send Message
-            </button>
-          </form>
-        </div>
+        <ContactForm />
       </div>
     </div>
   )
