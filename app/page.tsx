@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Image from "next/image"
+
 import { ShieldAlert, Terminal, Lock, Code, ChevronRight } from "lucide-react"
 
 export default function Home() {
@@ -7,31 +9,49 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary mb-8 font-medium">
-            <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-            Information Security Consultant
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl">
-            Offensive Security Professional & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Red Teamer</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10">
-            Specializing in web, API, network, and Active Directory penetration testing.
-            Passionate about securing critical systems and breaking things to make them stronger.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Link
-              href="/about"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-            >
-              About Me
-            </Link>
-            <Link
-              href="/writeups"
-              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-            >
-              Read Writeups
-            </Link>
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
+            <div className="flex flex-col items-center md:items-start">
+              <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary mb-8 font-medium">
+                <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+                Information Security Consultant
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Offensive Security Professional & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Red Teamer</span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10">
+                Specializing in web, API, network, and Active Directory penetration testing.
+                Passionate about securing critical systems and breaking things to make them stronger.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                >
+                  About Me
+                </Link>
+                <Link
+                  href="/writeups"
+                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                >
+                  Read Writeups
+                </Link>
+              </div>
+            </div>
+            
+            <div className="relative hidden md:flex justify-center items-center">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative">
+                <Image 
+                  src="/my.png" 
+                  alt="Ruwantha Harshamal" 
+                  width={400} 
+                  height={400} 
+                  className="rounded-2xl border border-primary/20 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500" 
+                  priority 
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
