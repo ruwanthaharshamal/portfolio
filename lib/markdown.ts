@@ -10,7 +10,7 @@ export interface PostMeta {
   date: string
   tags: string[]
   description: string
-  type: 'writeups' | 'blog' | 'projects' | 'tools'
+  type: 'security-blog' | 'tech-blog' | 'projects' | 'tools'
   platform?: string
 }
 
@@ -43,7 +43,7 @@ export function getPostBySlug(type: string, slug: string | string[]): Post | nul
       date: data.date || new Date().toISOString(),
       tags: data.tags || [],
       description: data.description || '',
-      type: type as "writeups" | "blog" | "projects" | "tools",
+      type: type as "security-blog" | "tech-blog" | "projects" | "tools",
       platform: inferredPlatform,
       content,
     }
