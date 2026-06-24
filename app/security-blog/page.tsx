@@ -1,13 +1,19 @@
-import { getAllPosts, getAllTags } from "@/lib/markdown"
-import ClientPage from "./client-page"
+import { getFolderItems } from "@/lib/markdown"
+import { CategoryPage } from "@/components/category-page"
 
 export const metadata = {
   title: "Security Blog | Ruwantha Harshamal",
 }
 
 export default function SecurityBlogPage() {
-  const posts = getAllPosts("security-blog")
-  const tags = getAllTags("security-blog")
+  const type = "security-blog"
+  const items = getFolderItems(type, "")
   
-  return <ClientPage posts={posts} tags={tags} />
+  return (
+    <CategoryPage 
+      items={items} 
+      title="Security Blog" 
+      type={type}
+    />
+  )
 }

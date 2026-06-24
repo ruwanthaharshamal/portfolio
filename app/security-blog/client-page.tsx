@@ -58,17 +58,17 @@ export default function ClientPage({ posts, tags }: { posts: PostMeta[], tags: s
       <div className="mb-12">
         <h1 className="text-4xl font-bold tracking-tight mb-4 flex items-center gap-3">
           <Shield className="h-8 w-8 text-primary" />
-          Writeups
+          Security Blog
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-4">
-          Detailed technical analysis of vulnerabilities discovered during bug bounties, CTFs, and personal research.
+          Detailed technical analysis of vulnerabilities, MITRE ATT&CK techniques, CTFs, and security research.
         </p>
         <div className="h-1 w-20 bg-primary rounded-full"></div>
       </div>
 
       <div className="flex flex-col gap-6 mb-12">
         <div className="flex flex-col sm:flex-row justify-between gap-4">
-          <SearchBar searchQuery={searchQuery} setSearchQuery={handleSearchQueryChange} placeholder="Search writeups..." />
+          <SearchBar searchQuery={searchQuery} setSearchQuery={handleSearchQueryChange} placeholder="Search security posts..." />
         </div>
         
         <div className="space-y-4">
@@ -106,7 +106,7 @@ export default function ClientPage({ posts, tags }: { posts: PostMeta[], tags: s
 
       {filteredPosts.length === 0 ? (
         <div className="text-center py-24 bg-card rounded-2xl border border-dashed">
-          <p className="text-lg text-muted-foreground">No writeups found matching your criteria.</p>
+          <p className="text-lg text-muted-foreground">No posts found matching your criteria.</p>
           <button 
             onClick={() => { setSearchQuery(""); setSelectedTag(null); setSelectedPlatform(null); }}
             className="mt-4 text-primary hover:underline font-medium"

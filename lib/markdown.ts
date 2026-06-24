@@ -18,6 +18,14 @@ export interface Post extends PostMeta {
   content: string
 }
 
+export interface FolderItem {
+  slug: string
+  title: string
+  isDirectory: boolean
+  itemCount: number
+  post?: PostMeta
+}
+
 export function getPostBySlug(type: string, slug: string | string[]): Post | null {
   try {
     const slugPath = Array.isArray(slug) ? slug.join('/') : slug
@@ -101,6 +109,70 @@ export function getAllPosts(type: string): PostMeta[] {
   }
 }
 
+export function getFolderItems(type: string, slug: string | string[]): FolderItem[] {
+  try {
+    const slugPath = Array.isArray(slug) ? slug.join('/') : slug
+    const directory = path.join(contentDirectory, type, slugPath)
+    
+    if (!fs.existsSync(directory) || !fs.statSync(directory).isDirectory()) {
+      return []
+    }
+    
+    const items = fs.readdirSync(directory)
+    const results: FolderItem[] = []
+    
+    items.forEach((item) => {
+      const fullPath = path.join(directory, item)
+      const stat = fs.statSync(fullPath)
+      const relativePath = path.relative(path.join(contentDirectory, type), fullPath).replace(/\\/g, '/')
+      
+      if (stat.isDirectory()) {
+        const subFiles = getFilesRecursively(fullPath)
+        let title = item.length <= 4 ? item.toUpperCase() : item.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+        if (item.toLowerCase() === 'mitre-attack') title = 'MITRE ATT&CK'
+        
+        results.push({
+          slug: relativePath,
+          title: title,
+          isDirectory: true,
+          itemCount: subFiles.length
+        })
+      } else if (item.endsWith('.md')) {
+        const post = getPostBySlug(type, relativePath.split('/'))
+        if (post) {
+          const { content: _, ...meta } = post
+          results.push({
+            slug: meta.slug,
+            title: meta.title,
+            isDirectory: false,
+            itemCount: 0,
+            post: meta
+          })
+        }
+      }
+    })
+    
+    return results.sort((a, b) => {
+      if (a.isDirectory && !b.isDirectory) return -1
+      if (!a.isDirectory && b.isDirectory) return 1
+      return a.title.localeCompare(b.title)
+    })
+  } catch (error) {
+    console.error(`Error reading folder items for ${type}/${slug}:`, error)
+    return []
+  }
+}
+
+export function isDirectory(type: string, slug: string | string[]): boolean {
+  try {
+    const slugPath = Array.isArray(slug) ? slug.join('/') : slug
+    const fullPath = path.join(contentDirectory, type, slugPath)
+    return fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()
+  } catch {
+    return false
+  }
+}
+
 export function getAllTags(type?: string): string[] {
   let allPosts: PostMeta[] = []
   
@@ -108,8 +180,8 @@ export function getAllTags(type?: string): string[] {
     allPosts = getAllPosts(type)
   } else {
     allPosts = [
-      ...getAllPosts('writeups'),
-      ...getAllPosts('blog'),
+      ...getAllPosts('security-blog'),
+      ...getAllPosts('tech-blog'),
       ...getAllPosts('projects'),
       ...getAllPosts('tools'),
     ]
