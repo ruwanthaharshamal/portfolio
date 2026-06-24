@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { remark } from 'remark'
 import html from 'remark-html'
+import remarkGfm from 'remark-gfm'
 import { createHighlighter, type HighlighterCore } from 'shiki'
 
 let highlighterPromise: Promise<HighlighterCore> | null = null;
@@ -54,6 +55,7 @@ export function MarkdownRenderer({ content }: { content: string }) {
       try {
         // Parse markdown to HTML
         const result = await remark()
+          .use(remarkGfm)
           .use(html, { sanitize: false })
           .process(content)
           
@@ -132,7 +134,7 @@ export function MarkdownRenderer({ content }: { content: string }) {
       const highlighter = await getShiki()
       const theme = document.documentElement.classList.contains('dark') ? 'github-dark' : 'github-light'
       // Re-render
-      const result = await remark().use(html, { sanitize: false }).process(content)
+      const result = await remark().use(remarkGfm).use(html, { sanitize: false }).process(content)
       if (highlighter) {
         const processedHtml = await processCodeBlocksLocal(result.toString(), highlighter, theme)
         setHtmlContent(processedHtml)
