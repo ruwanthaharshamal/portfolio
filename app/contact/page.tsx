@@ -1,5 +1,5 @@
 import { Mail, MessageSquare } from "lucide-react"
-import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { FaLinkedin } from "react-icons/fa"
 import { ContactForm } from "@/components/contact-form"
 
 export const metadata = {
@@ -26,7 +26,7 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
           <div className="space-y-6">
             <a 
-              href="mailto:ruwanharsha2001@gmail.com"
+              href="mailto:ruwanharsha01@gmail.com"
               className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors group"
             >
               <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
@@ -34,7 +34,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-medium text-foreground">Email</p>
-                <p className="text-sm">ruwanharsha2001@gmail.com</p>
+                <p className="text-sm">ruwanharsha01@gmail.com</p>
               </div>
             </a>
             
@@ -49,22 +49,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-medium text-foreground">LinkedIn</p>
-                <p className="text-sm">ruwantha-harshamal</p>
-              </div>
-            </a>
-            
-            <a 
-              href="https://github.com/ruwanthah" // Updated with a more likely username or keeping it generic if unsure
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors group"
-            >
-              <div className="p-3 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
-                <FaGithub className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="font-medium text-foreground">GitHub</p>
-                <p className="text-sm">github.com/ruwanthah</p>
+                <p className="text-sm">linkedin.com/in/ruwantha-harshamal</p>
               </div>
             </a>
           </div>

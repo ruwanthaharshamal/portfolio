@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react"
-import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { FaLinkedin } from "react-icons/fa"
 
 export function Footer() {
   return (
@@ -15,15 +15,6 @@ export function Footer() {
 
           <div className="flex gap-4">
             <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <FaGithub className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </a>
-            <a
               href="https://www.linkedin.com/in/ruwantha-harshamal"
               target="_blank"
               rel="noreferrer"
@@ -33,7 +24,7 @@ export function Footer() {
               <span className="sr-only">LinkedIn</span>
             </a>
             <a
-              href="mailto:ruwanharsha2001@gmail.com"
+              href="mailto:ruwanharsha01@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               <Mail className="h-5 w-5" />

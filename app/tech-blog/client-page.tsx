@@ -47,10 +47,10 @@ export default function ClientPage({ posts, tags }: { posts: PostMeta[], tags: s
       <div className="mb-12">
         <h1 className="text-4xl font-bold tracking-tight mb-4 flex items-center gap-3">
           <BookOpen className="h-8 w-8 text-primary" />
-          Security Blog
+          Tech Blog
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-4">
-          Thoughts on cybersecurity trends, deep dives into attack vectors, and reflections on my red teaming learning journey.
+          Thoughts on technology, tools, and home lab experiments — from Linux server setups to network configurations and beyond.
         </p>
         <div className="h-1 w-20 bg-primary rounded-full"></div>
       </div>

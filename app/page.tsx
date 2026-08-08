@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ShieldAlert, Terminal, Lock, Code, ChevronRight } from "lucide-react"
+import { ShieldAlert, Terminal, Lock, Code, Server, Wifi, Smartphone, ChevronRight, Mail } from "lucide-react"
 
 export default function Home() {
   return (
@@ -10,10 +10,10 @@ export default function Home() {
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary mb-8 font-medium">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-            Information Security Consultant
+            Offensive Security Professional
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl">
-            Offensive Security Professional & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Red Teamer</span>
+            Offensive Security Professional &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Red Teamer</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10">
             Specializing in web, API, network, and Active Directory penetration testing.
@@ -27,10 +27,10 @@ export default function Home() {
               About Me
             </Link>
             <Link
-              href="/writeups"
+              href="/security-blog"
               className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
-              Read Writeups
+              Security Blog
             </Link>
           </div>
         </div>
@@ -48,9 +48,9 @@ export default function Home() {
             <div className="p-3 rounded-lg bg-primary/10 text-primary mb-4">
               <Code className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Web App Pentesting</h3>
+            <h3 className="text-xl font-semibold mb-2">Web &amp; API Pentesting</h3>
             <p className="text-sm text-muted-foreground">
-              Deep expertise in OWASP Top 10, advanced injection attacks, logic flaws, and modern web framework vulnerabilities.
+              Deep expertise in OWASP Top 10, advanced injection attacks, authentication flaws, business logic vulnerabilities, and modern API security.
             </p>
           </div>
 
@@ -58,9 +58,9 @@ export default function Home() {
             <div className="p-3 rounded-lg bg-blue-500/10 text-blue-500 mb-4">
               <ShieldAlert className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Network Security</h3>
+            <h3 className="text-xl font-semibold mb-2">Network &amp; Infrastructure</h3>
             <p className="text-sm text-muted-foreground">
-              Internal/external VAPT, firewalls review, endpoint security, and real-world attack simulations.
+              Internal and external VAPT, firewall and DNS configuration reviews, endpoint security assessments, and real-world attack simulations.
             </p>
           </div>
 
@@ -70,7 +70,7 @@ export default function Home() {
             </div>
             <h3 className="text-xl font-semibold mb-2">Active Directory</h3>
             <p className="text-sm text-muted-foreground">
-              Advanced AD enumeration, privilege escalation paths, lateral movement, and post-exploitation.
+              Advanced AD enumeration, privilege escalation path analysis, lateral movement, credential abuse, and post-exploitation in enterprise environments.
             </p>
           </div>
 
@@ -80,7 +80,37 @@ export default function Home() {
             </div>
             <h3 className="text-xl font-semibold mb-2">Red Teaming</h3>
             <p className="text-sm text-muted-foreground">
-              Adversary simulation, defense evasion, phishing campaigns, and full-chain exploit development.
+              Adversary simulation, defense evasion, phishing simulation campaigns with GoPhish &amp; PhishingBox, and full-chain attack development.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start p-6 rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md">
+            <div className="p-3 rounded-lg bg-orange-500/10 text-orange-500 mb-4">
+              <Server className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Vulnerability Assessment</h3>
+            <p className="text-sm text-muted-foreground">
+              Comprehensive internal and external vulnerability assessments across enterprise environments using Nessus, covering OS, service, and configuration weaknesses with CVSS risk rating.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start p-6 rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md">
+            <div className="p-3 rounded-lg bg-cyan-500/10 text-cyan-500 mb-4">
+              <Wifi className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Wireless Security</h3>
+            <p className="text-sm text-muted-foreground">
+              Wireless network penetration testing and Bluetooth security assessments using dedicated hardware adapters in authorized environments.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start p-6 rounded-2xl border bg-card transition-all hover:border-primary/50 hover:shadow-md">
+            <div className="p-3 rounded-lg bg-pink-500/10 text-pink-500 mb-4">
+              <Smartphone className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Mobile App Pentesting</h3>
+            <p className="text-sm text-muted-foreground">
+              Mobile application security assessments covering insecure data storage, improper authentication, and platform-specific vulnerabilities on Android and iOS.
             </p>
           </div>
         </div>
@@ -102,7 +132,7 @@ export default function Home() {
                 <Link href="/tools" className="group flex items-center text-sm font-medium text-foreground hover:text-primary">
                   Custom Tools <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
-                <Link href="/blog" className="group flex items-center text-sm font-medium text-foreground hover:text-primary">
+                <Link href="/security-blog" className="group flex items-center text-sm font-medium text-foreground hover:text-primary">
                   Security Blog <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -120,6 +150,56 @@ export default function Home() {
                 <p className="text-foreground mt-1">[&apos;Web Pentesting&apos;, &apos;API Sec&apos;, &apos;Network&apos;, &apos;AD&apos;, &apos;Red Teaming&apos;]</p>
                 <p className="mt-3 text-primary animate-pulse">_</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact / Hire Me Section */}
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-blue-500/10 border border-primary/20 p-8 md:p-14 text-center">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          <div className="relative">
+            <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary mb-6 font-medium">
+              <Mail className="h-3.5 w-3.5 mr-2" />
+              Available for Engagements
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+              Need a Penetration Test?
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-4 text-lg">
+              I offer professional security assessment services — from web application and API testing to full Active Directory red team engagements. 
+              Let&apos;s identify your attack surface before adversaries do.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center mb-8 text-sm">
+              {[
+                "Web App Pentesting",
+                "API Security",
+                "Network VAPT",
+                "Active Directory",
+                "Wireless",
+                "Mobile App",
+                "Phishing Simulation",
+              ].map((service) => (
+                <span key={service} className="bg-primary/10 border border-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                  {service}
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                Contact Me
+              </Link>
+              <a
+                href="mailto:ruwanharsha01@gmail.com"
+                className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              >
+                ruwanharsha01@gmail.com
+              </a>
             </div>
           </div>
         </div>
