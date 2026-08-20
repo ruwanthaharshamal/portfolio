@@ -10,7 +10,7 @@ export interface PostMeta {
   date: string
   tags: string[]
   description: string
-  type: 'security-blog' | 'tech-blog' | 'projects' | 'tools'
+  type: 'security-blog' | 'research' | 'projects' | 'tools'
   platform?: string
 }
 
@@ -51,7 +51,7 @@ export function getPostBySlug(type: string, slug: string | string[]): Post | nul
       date: data.date || new Date().toISOString(),
       tags: data.tags || [],
       description: data.description || '',
-      type: type as "security-blog" | "tech-blog" | "projects" | "tools",
+      type: type as "security-blog" | "research" | "projects" | "tools",
       platform: inferredPlatform,
       content,
     }
@@ -181,7 +181,7 @@ export function getAllTags(type?: string): string[] {
   } else {
     allPosts = [
       ...getAllPosts('security-blog'),
-      ...getAllPosts('tech-blog'),
+      ...getAllPosts('research'),
       ...getAllPosts('projects'),
       ...getAllPosts('tools'),
     ]

@@ -47,17 +47,17 @@ export default function ClientPage({ posts, tags }: { posts: PostMeta[], tags: s
       <div className="mb-12">
         <h1 className="text-4xl font-bold tracking-tight mb-4 flex items-center gap-3">
           <BookOpen className="h-8 w-8 text-primary" />
-          Tech Blog
+          Security Research
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-4">
-          Thoughts on technology, tools, and home lab experiments — from Linux server setups to network configurations and beyond.
+          Vulnerability research, CVE disclosures, security advisories, and technical security writeups.
         </p>
         <div className="h-1 w-20 bg-primary rounded-full"></div>
       </div>
 
       <div className="flex flex-col gap-6 mb-8">
         <div className="flex flex-col sm:flex-row justify-between gap-4">
-          <SearchBar searchQuery={searchQuery} setSearchQuery={handleSearchQueryChange} placeholder="Search blog posts..." />
+          <SearchBar searchQuery={searchQuery} setSearchQuery={handleSearchQueryChange} placeholder="Search research posts..." />
         </div>
         <TagFilter tags={tags} selectedTag={selectedTag} setSelectedTag={handleTagChange} />
       </div>
