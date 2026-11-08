@@ -7,3 +7,4 @@ lint-output.txt
 .DS_Store
 *.local
 .env
+*.tsbuildinfo

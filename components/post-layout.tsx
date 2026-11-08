@@ -9,7 +9,7 @@ export default async function DynamicPostPage({
   params,
   type,
   backUrl,
-  backTitle
+  backTitle,
 }: {
   params: { slug: string | string[] }
   type: string
@@ -24,43 +24,57 @@ export default async function DynamicPostPage({
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 max-w-4xl">
-      <Link 
-        href={backUrl}
-        className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors"
-      >
-        <ChevronLeft className="mr-1 h-4 w-4" />
-        Back to {backTitle}
-      </Link>
+    <div className="relative min-h-screen overflow-hidden bg-[#14171f] py-12 sm:py-16">
+      {/* Subtle Bottom Atmospheric Glow */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[320px] z-0 overflow-hidden">
+        <img
+          src="/images/crimson-mountains.jpg"
+          alt=""
+          className="w-full h-full object-cover object-bottom opacity-45 img-champagne"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#14171f] via-[#14171f]/55 to-[#14171f]" />
+      </div>
 
-      <article>
-        <header className="mb-10 text-center">
-          <div className="flex justify-center flex-wrap gap-2 mb-6">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
-              >
-                <Tag className="mr-1 h-3 w-3" />
-                {tag}
-              </span>
-            ))}
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
-            {post.title}
-          </h1>
-          <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
-            <time dateTime={post.date} className="flex items-center">
-              <Calendar className="mr-1 h-4 w-4" />
-              {format(new Date(post.date), 'MMMM d, yyyy')}
-            </time>
-          </div>
-        </header>
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <Link
+          href={backUrl}
+          className="inline-flex items-center gap-1.5 text-xs font-mono text-[#c8a679] hover:text-[#e2bf8d] mb-8 transition-colors"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          Back to {backTitle}
+        </Link>
 
-        <div className="mx-auto rounded-xl bg-card border p-6 sm:p-10 shadow-sm">
-          <MarkdownRenderer content={post.content} />
-        </div>
-      </article>
+        <article className="space-y-8">
+          <header className="space-y-4 border-b border-[#2e364a] pb-8">
+            <div className="flex flex-wrap items-center gap-2">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex items-center rounded-lg bg-[#252b3b] border border-[#364056] px-3 py-1 text-xs font-mono text-[#e2bf8d]"
+                >
+                  <Tag className="mr-1.5 h-3 w-3 text-[#c8a679]" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-bold font-serif tracking-tight text-white leading-tight">
+              {post.title}
+            </h1>
+
+            <div className="flex items-center gap-4 text-xs font-mono text-[#9da6b8]">
+              <time dateTime={post.date} className="flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5 text-[#c8a679]" />
+                {format(new Date(post.date), "MMMM d, yyyy")}
+              </time>
+            </div>
+          </header>
+
+          <div className="rounded-2xl bg-[#1d222e]/95 border border-[#2e364a] p-6 sm:p-10 shadow-xl">
+            <MarkdownRenderer content={post.content} />
+          </div>
+        </article>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" fill="none">
+  <defs>
+    <radialGradient id="socBg" cx="50%" cy="60%" r="75%">
+      <stop offset="0%" stop-color="#330d17" />
+      <stop offset="60%" stop-color="#14070b" />
+      <stop offset="100%" stop-color="#070406" />
+    </radialGradient>
+    <linearGradient id="rackBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d1116" />
+      <stop offset="100%" stop-color="#0d070a" />
+    </linearGradient>
+    <filter id="ledGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#socBg)" />
+
+  <!-- Floor reflection grid -->
+  <path d="M0 320 L600 320 L600 380 L0 380 Z" fill="#0b0508" opacity="0.9" />
+  <line x1="0" y1="320" x2="600" y2="320" stroke="#4a1926" stroke-width="1" />
+
+  <!-- Left Server Rack -->
+  <g transform="translate(95, 55)">
+    <rect width="115" height="265" rx="6" fill="url(#rackBody)" stroke="#381823" stroke-width="1.5" />
+    <line x1="12" y1="12" x2="12" y2="253" stroke="#e11d48" stroke-width="2" opacity="0.6" filter="url(#ledGlow)" />
+    <g fill="#26131a">
+      <rect x="22" y="20" width="80" height="16" rx="2" />
+      <rect x="22" y="44" width="80" height="16" rx="2" />
+      <rect x="22" y="68" width="80" height="16" rx="2" />
+      <rect x="22" y="92" width="80" height="16" rx="2" />
+      <rect x="22" y="116" width="80" height="16" rx="2" />
+      <rect x="22" y="140" width="80" height="16" rx="2" />
+      <rect x="22" y="164" width="80" height="16" rx="2" />
+      <rect x="22" y="188" width="80" height="16" rx="2" />
+      <rect x="22" y="212" width="80" height="16" rx="2" />
+    </g>
+    <!-- Blinking LEDs -->
+    <g fill="#fb7185" filter="url(#ledGlow)">
+      <circle cx="30" cy="28" r="2" />
+      <circle cx="38" cy="28" r="2" />
+      <circle cx="30" cy="52" r="2" />
+      <circle cx="30" cy="76" r="2" />
+      <circle cx="38" cy="76" r="2" />
+      <circle cx="30" cy="124" r="2" />
+      <circle cx="30" cy="172" r="2" />
+      <circle cx="38" cy="172" r="2" />
+      <circle cx="30" cy="220" r="2" />
+    </g>
+  </g>
+
+  <!-- Center Hero Server Rack -->
+  <g transform="translate(232, 35)">
+    <rect width="136" height="285" rx="8" fill="url(#rackBody)" stroke="#5c2032" stroke-width="2" />
+    <line x1="14" y1="14" x2="14" y2="271" stroke="#f43f5e" stroke-width="2.5" filter="url(#ledGlow)" />
+    <line x1="122" y1="14" x2="122" y2="271" stroke="#f43f5e" stroke-width="2.5" filter="url(#ledGlow)" />
+    <g fill="#2b141d" stroke="#3f1b28" stroke-width="0.8">
+      <rect x="24" y="20" width="88" height="18" rx="2" />
+      <rect x="24" y="46" width="88" height="18" rx="2" />
+      <rect x="24" y="72" width="88" height="18" rx="2" />
+      <rect x="24" y="98" width="88" height="18" rx="2" />
+      <rect x="24" y="124" width="88" height="18" rx="2" />
+      <rect x="24" y="150" width="88" height="18" rx="2" />
+      <rect x="24" y="176" width="88" height="18" rx="2" />
+      <rect x="24" y="202" width="88" height="18" rx="2" />
+      <rect x="24" y="228" width="88" height="18" rx="2" />
+    </g>
+    <!-- Active Telemetry Bars -->
+    <g fill="#ffe4e6" filter="url(#ledGlow)">
+      <rect x="32" y="27" width="24" height="3" rx="1" />
+      <rect x="32" y="53" width="38" height="3" rx="1" />
+      <rect x="32" y="79" width="18" height="3" rx="1" />
+      <rect x="32" y="105" width="46" height="3" rx="1" />
+      <rect x="32" y="131" width="30" height="3" rx="1" />
+      <rect x="32" y="157" width="52" height="3" rx="1" />
+      <rect x="32" y="183" width="22" height="3" rx="1" />
+      <rect x="32" y="209" width="40" height="3" rx="1" />
+      <rect x="32" y="235" width="34" height="3" rx="1" />
+    </g>
+    <g fill="#fb7185" filter="url(#ledGlow)">
+      <circle cx="98" cy="29" r="2.2" />
+      <circle cx="98" cy="55" r="2.2" />
+      <circle cx="98" cy="81" r="2.2" />
+      <circle cx="98" cy="107" r="2.2" />
+      <circle cx="98" cy="133" r="2.2" />
+      <circle cx="98" cy="159" r="2.2" />
+      <circle cx="98" cy="185" r="2.2" />
+      <circle cx="98" cy="211" r="2.2" />
+      <circle cx="98" cy="237" r="2.2" />
+    </g>
+  </g>
+
+  <!-- Right Server Rack -->
+  <g transform="translate(390, 55)">
+    <rect width="115" height="265" rx="6" fill="url(#rackBody)" stroke="#381823" stroke-width="1.5" />
+    <line x1="103" y1="12" x2="103" y2="253" stroke="#e11d48" stroke-width="2" opacity="0.6" filter="url(#ledGlow)" />
+    <g fill="#26131a">
+      <rect x="13" y="20" width="80" height="16" rx="2" />
+      <rect x="13" y="44" width="80" height="16" rx="2" />
+      <rect x="13" y="68" width="80" height="16" rx="2" />
+      <rect x="13" y="92" width="80" height="16" rx="2" />
+      <rect x="13" y="116" width="80" height="16" rx="2" />
+      <rect x="13" y="140" width="80" height="16" rx="2" />
+      <rect x="13" y="164" width="80" height="16" rx="2" />
+      <rect x="13" y="188" width="80" height="16" rx="2" />
+      <rect x="13" y="212" width="80" height="16" rx="2" />
+    </g>
+    <g fill="#fb7185" filter="url(#ledGlow)">
+      <circle cx="24" cy="28" r="2" />
+      <circle cx="24" cy="76" r="2" />
+      <circle cx="32" cy="76" r="2" />
+      <circle cx="24" cy="100" r="2" />
+      <circle cx="24" cy="148" r="2" />
+      <circle cx="32" cy="148" r="2" />
+      <circle cx="24" cy="196" r="2" />
+    </g>
+  </g>
+</svg>
+

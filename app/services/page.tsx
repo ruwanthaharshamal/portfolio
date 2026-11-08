@@ -8,7 +8,7 @@ import {
   Mail,
   Shield,
   Smartphone,
-  ChevronRight,
+  ArrowRight,
   FileText,
 } from "lucide-react"
 
@@ -22,10 +22,7 @@ const services = [
   {
     id: "web-vapt",
     icon: Globe,
-    color: "text-primary",
-    bg: "bg-primary/10",
     badge: "Most Popular",
-    badgeColor: "bg-primary/20 text-primary border-primary/30",
     title: "Web Application VAPT",
     tagline: "Your defenses tested against real-world attack techniques",
     description:
@@ -48,10 +45,7 @@ const services = [
   {
     id: "api-pentest",
     icon: Plug,
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
     badge: "High Demand",
-    badgeColor: "bg-blue-500/20 text-blue-400 border-blue-500/30",
     title: "API Penetration Testing",
     tagline: "REST API security testing with request/response evidence",
     description:
@@ -74,10 +68,7 @@ const services = [
   {
     id: "wordpress",
     icon: LayoutTemplate,
-    color: "text-orange-500",
-    bg: "bg-orange-500/10",
     badge: null,
-    badgeColor: "",
     title: "WordPress Security Assessment",
     tagline: "Comprehensive audit of your WordPress site and plugins",
     description:
@@ -100,10 +91,7 @@ const services = [
   {
     id: "network-vapt",
     icon: Network,
-    color: "text-green-500",
-    bg: "bg-green-500/10",
     badge: null,
-    badgeColor: "",
     title: "External Network / Infrastructure VAPT",
     tagline: "Attack surface reduction for internet-facing infrastructure",
     description:
@@ -126,10 +114,7 @@ const services = [
   {
     id: "config-review",
     icon: Settings,
-    color: "text-yellow-500",
-    bg: "bg-yellow-500/10",
     badge: null,
-    badgeColor: "",
     title: "Security Configuration Review",
     tagline: "Harden your servers, firewalls, and cloud without exploitation",
     description:
@@ -152,10 +137,7 @@ const services = [
   {
     id: "phishing",
     icon: Mail,
-    color: "text-red-500",
-    bg: "bg-red-500/10",
     badge: "Unique Differentiator",
-    badgeColor: "bg-red-500/20 text-red-400 border-red-500/30",
     title: "Phishing Simulation & Awareness Assessment",
     tagline: "Measure your team's human-layer security awareness",
     description:
@@ -178,10 +160,7 @@ const services = [
   {
     id: "active-directory",
     icon: Shield,
-    color: "text-purple-500",
-    bg: "bg-purple-500/10",
     badge: "High Value",
-    badgeColor: "bg-purple-500/20 text-purple-400 border-purple-500/30",
     title: "Active Directory Security Assessment",
     tagline: "Simulate real attacker lateral movement in your AD environment",
     description:
@@ -204,10 +183,7 @@ const services = [
   {
     id: "mobile",
     icon: Smartphone,
-    color: "text-cyan-500",
-    bg: "bg-cyan-500/10",
     badge: null,
-    badgeColor: "",
     title: "Mobile Application Security Testing",
     tagline: "Android APK analysis — static and dynamic security assessment",
     description:
@@ -231,163 +207,145 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col gap-0 pb-16">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-background pt-20 pb-16 md:pt-28 md:pb-20 border-b">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary mb-6 font-medium">
-            <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
-            Available for Engagements
+    <div className="relative min-h-screen overflow-hidden bg-[#14171f] py-12 sm:py-16">
+      {/* Top Hero Atmospheric Silk Waves Background */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] z-0 overflow-hidden">
+        <img
+          src="/images/crimson-waves-bg.jpg"
+          alt=""
+          className="w-full h-full object-cover object-center opacity-55 mix-blend-screen img-champagne"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#14171f]/35 via-[#14171f]/70 to-[#14171f]" />
+      </div>
+
+      {/* Bottom Atmospheric Mountains Backdrop */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[360px] z-0 overflow-hidden">
+        <img
+          src="/images/crimson-mountains.jpg"
+          alt=""
+          className="w-full h-full object-cover object-bottom opacity-45 img-champagne"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#14171f] via-[#14171f]/55 to-[#14171f]" />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12">
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end pb-8 border-b border-[#2e364a]">
+          <div className="lg:col-span-7 space-y-3">
+            <div className="text-xs font-mono font-semibold tracking-[0.18em] text-[#c8a679] uppercase">
+              // SERVICES
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold font-serif text-white tracking-tight">
+              Security Assessment{" "}
+              <span className="italic font-normal text-[#e2bf8d]">Services</span>
+            </h1>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 max-w-3xl">
-            Security Assessment{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">
-              Services
-            </span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mb-8">
-            Professional penetration testing and security assessment services delivered by an offensive
-            security practitioner with 1.5+ years of client-facing experience across enterprise and
-            financial-sector environments.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow transition-colors hover:bg-primary/90"
-            >
-              Request an Engagement
-              <ChevronRight className="ml-1 h-4 w-4" />
-            </Link>
-            <a
-              href="mailto:ruwanharsha01@gmail.com"
-              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-7 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              ruwanharsha01@gmail.com
-            </a>
-          </div>
-
-          {/* Stats row */}
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6">
-            {[
-              { value: "13+", label: "Engagements Delivered" },
-              { value: "10+", label: "Enterprise Clients" },
-              { value: "160+", label: "Vulnerabilities Found" },
-              { value: "8", label: "Service Offerings" },
-            ].map((s) => (
-              <div key={s.label} className="border rounded-xl p-4 bg-card/50 text-center">
-                <p className="text-3xl font-extrabold text-primary">{s.value}</p>
-                <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon
-            return (
-              <div
-                key={service.id}
-                className="group relative flex flex-col border rounded-2xl bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300 overflow-hidden"
-              >
-                {/* Top accent line */}
-                <div className="h-1 w-full bg-gradient-to-r from-primary/60 via-primary/20 to-transparent" />
-
-                <div className="p-7 flex flex-col flex-1">
-                  {/* Header */}
-                  <div className="flex items-start justify-between gap-4 mb-5">
-                    <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-xl ${service.bg} ${service.color} shrink-0`}>
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h2 className="text-lg font-bold leading-snug">{service.title}</h2>
-                          {service.badge && (
-                            <span
-                              className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${service.badgeColor}`}
-                            >
-                              {service.badge}
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-0.5">{service.tagline}</p>
-                      </div>
-                    </div>
-                    <span className="shrink-0 text-xs font-mono text-muted-foreground/50 pt-1">
-                      0{index + 1}
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* What's included */}
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-                    What's Included
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-6 flex-1">
-                    {service.checks.map((check) => (
-                      <div key={check} className="flex items-start gap-2">
-                        <span className={`mt-0.5 h-1.5 w-1.5 rounded-full shrink-0 ${service.bg} ${service.color} border ${service.bg.replace("bg-", "border-")}`} />
-                        <span className="text-xs text-muted-foreground">{check}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Deliverable */}
-                  <div className="mt-auto rounded-xl bg-secondary/40 border border-secondary p-4">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <FileText className="h-3.5 w-3.5 text-primary" />
-                      <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                        Deliverable
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{service.deliverable}</p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-blue-500/10 border border-primary/20 p-8 md:p-14 text-center">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
-          <div className="relative">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-              Ready to Secure Your Systems?
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-8 text-base">
-              All engagements are conducted in a professional, authorized, and documented manner. Get in
-              touch to discuss scope, timeline, and deliverables.
+          <div className="lg:col-span-5 space-y-4">
+            <p className="text-xs sm:text-sm text-[#d5dae6] leading-relaxed">
+              Professional penetration testing and security assessment services delivered across
+              enterprise and financial-sector environments.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground shadow transition-colors hover:bg-primary/90"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#e2bf8d] hover:bg-[#d4af7a] text-[#14171f] font-semibold text-xs transition-all shadow-md"
               >
-                Get In Touch
-                <ChevronRight className="ml-2 h-4 w-4" />
+                Request an Engagement
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <a
                 href="mailto:ruwanharsha01@gmail.com"
-                className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-[#1d222e] hover:bg-[#252b3b] border border-[#2e364a] text-[#e2bf8d] font-mono text-xs transition-colors"
               >
                 ruwanharsha01@gmail.com
               </a>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Stats Row */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {[
+            { value: "13+", label: "Engagements Delivered" },
+            { value: "10+", label: "Enterprise Clients" },
+            { value: "160+", label: "Vulnerabilities Found" },
+            { value: "8", label: "Service Offerings" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="rounded-xl bg-[#1d222e]/95 border border-[#2e364a] p-5 text-center shadow-sm"
+            >
+              <p className="text-3xl font-bold font-serif text-[#e2bf8d]">{s.value}</p>
+              <p className="text-[11px] font-mono text-[#9da6b8] mt-1 uppercase tracking-wider">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Services 2-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <div
+                key={service.id}
+                className="group relative flex flex-col rounded-2xl bg-[#1d222e]/95 border border-[#2e364a] hover:border-[#e2bf8d]/60 p-6 sm:p-7 transition-all duration-200 shadow-lg"
+              >
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#332b20] via-[#242326] to-[#1a1e28] border border-[#4f4230] text-[#e2bf8d] flex items-center justify-center shrink-0">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <h2 className="text-base sm:text-lg font-bold text-white">
+                          {service.title}
+                        </h2>
+                        {service.badge && (
+                          <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#2a251d] text-[#e2bf8d] border border-[#4f4230]">
+                            {service.badge}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-[#9da6b8] mt-0.5">{service.tagline}</p>
+                    </div>
+                  </div>
+                  <span className="shrink-0 text-xs font-mono text-[#c8a679]/80 pt-1">
+                    0{index + 1}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-[#d5dae6] mb-5 leading-relaxed">
+                  {service.description}
+                </p>
+
+                <h3 className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#c8a679] mb-3">
+                  What&apos;s Included
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-6 flex-1">
+                  {service.checks.map((check) => (
+                    <div key={check} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 bg-[#e2bf8d]" />
+                      <span className="text-xs text-[#d5dae6]">{check}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-auto rounded-xl bg-[#252b3b] border border-[#364056] p-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <FileText className="h-3.5 w-3.5 text-[#e2bf8d]" />
+                    <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#e2bf8d]">
+                      Deliverable
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#d5dae6] leading-relaxed">{service.deliverable}</p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }

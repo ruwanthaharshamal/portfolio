@@ -1,137 +1,107 @@
 "use client"
 
-import { useState, useMemo } from "react"
-import { Shield } from "lucide-react"
-import { PostCard } from "@/components/post-card"
-import { SearchBar, TagFilter } from "@/components/search-filter"
+import { useState } from "react"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import { MountainGraphic } from "@/components/mountain-graphic"
 import { type PostMeta } from "@/lib/markdown"
-import { Pagination } from "@/components/pagination"
 
-const POSTS_PER_PAGE = 6
+export default function ClientPage({ posts }: { posts: PostMeta[], tags: string[] }) {
+  const [selectedCategory, setSelectedCategory] = useState("HTB")
 
+  const categories = [
+    { name: "HTB", count: 1, slug: "htb" },
+    { name: "MITRE ATT&CK", count: 12, slug: "mitre-attack" },
+    { name: "Portswigger", count: 2, slug: "portswigger" },
+  ]
 
-export default function ClientPage({ posts, tags }: { posts: PostMeta[], tags: string[] }) {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedTag, setSelectedTag] = useState<string | null>(null)
-  const [currentPage, setCurrentPage] = useState(1)
-
-  const platforms = useMemo(() => {
-    return Array.from(new Set(posts.map((post) => post.platform).filter(Boolean))) as string[]
-  }, [posts])
-
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null)
-
-  const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            post.description.toLowerCase().includes(searchQuery.toLowerCase())
-      const matchesTag = selectedTag === null || post.tags.includes(selectedTag)
-      const matchesPlatform = selectedPlatform === null || post.platform === selectedPlatform
-      
-      return matchesSearch && matchesTag && matchesPlatform
-    })
-  }, [posts, searchQuery, selectedTag, selectedPlatform])
-
-  const groupedPosts = useMemo(() => {
-    const groups: Record<string, PostMeta[]> = {}
-    filteredPosts.forEach((post) => {
-      const platform = post.platform || "Other"
-      if (!groups[platform]) groups[platform] = []
-      groups[platform].push(post)
-    })
-    return groups
-  }, [filteredPosts])
-
-  // Reset filters
-  const handleSearchQueryChange = (q: string) => {
-    setSearchQuery(q)
-    setCurrentPage(1)
-  }
-
-  const handleTagChange = (tag: string | null) => {
-    setSelectedTag(tag)
-    setCurrentPage(1)
-  }
+  const activeCategory = categories.find((c) => c.name === selectedCategory) || categories[0]
 
   return (
-    <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 max-w-6xl">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold tracking-tight mb-4 flex items-center gap-3">
-          <Shield className="h-8 w-8 text-primary" />
-          Security Blog
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-4">
-          Detailed technical analysis of vulnerabilities, MITRE ATT&CK techniques, CTFs, and security research.
-        </p>
-        <div className="h-1 w-20 bg-primary rounded-full"></div>
-      </div>
-
-      <div className="flex flex-col gap-6 mb-12">
-        <div className="flex flex-col sm:flex-row justify-between gap-4">
-          <SearchBar searchQuery={searchQuery} setSearchQuery={handleSearchQueryChange} placeholder="Search security posts..." />
-        </div>
+    <div className="min-h-screen py-12 sm:py-16 space-y-10 bg-dunes-glow">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-10">
         
-        <div className="space-y-4">
-          <div>
-            <span className="text-sm font-medium text-muted-foreground mb-2 block">Filter by Platform:</span>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setSelectedPlatform(null)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  selectedPlatform === null 
-                    ? "bg-primary text-primary-foreground" 
-                    : "bg-secondary hover:bg-secondary/80 text-secondary-foreground"
-                }`}
-              >
-                All Platforms
-              </button>
-              {platforms.map((platform) => (
+        {/* Header matching Screen 05 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end pb-4 border-b border-[#23151b]">
+          <div className="lg:col-span-8 space-y-2">
+            <div className="text-xs font-mono font-bold tracking-widest text-[#ef4444] uppercase">
+              // SECURITY BLOG
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-bold font-serif text-white tracking-tight">
+              Security Blog
+            </h1>
+          </div>
+          <div className="lg:col-span-4">
+            <p className="text-xs sm:text-sm text-[#9a8890] leading-relaxed">
+              Write-ups, research notes and learning from real-world security assessments.
+            </p>
+          </div>
+        </div>
+
+        {/* 2-Column Section matching Screen 05 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-2">
+          
+          {/* Left Column: Category Navigation List */}
+          <div className="lg:col-span-5 space-y-3">
+            {categories.map((cat) => {
+              const isSelected = selectedCategory === cat.name
+              return (
                 <button
-                  key={platform}
-                  onClick={() => setSelectedPlatform(platform)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    selectedPlatform === platform 
-                      ? "bg-primary text-primary-foreground" 
-                      : "bg-secondary hover:bg-secondary/80 text-secondary-foreground"
+                  key={cat.name}
+                  onClick={() => setSelectedCategory(cat.name)}
+                  className={`w-full flex items-center justify-between p-5 rounded-2xl border transition-all text-left ${
+                    isSelected
+                      ? "bg-[#1d1117] border-[#4c202a] text-white shadow-md"
+                      : "bg-[#140e11] border-[#23151b] text-neutral-300 hover:border-[#381a24] hover:text-white"
                   }`}
                 >
-                  {platform}
+                  <span className="font-bold text-sm tracking-wide">
+                    {cat.name} ({cat.count})
+                  </span>
+                  <ArrowRight
+                    className={`h-4 w-4 transition-transform ${
+                      isSelected ? "text-[#e8cec2] translate-x-1" : "text-[#9a8890]"
+                    }`}
+                  />
                 </button>
-              ))}
-            </div>
+              )
+            })}
           </div>
-          <TagFilter tags={tags} selectedTag={selectedTag} setSelectedTag={handleTagChange} />
-        </div>
-      </div>
 
-      {filteredPosts.length === 0 ? (
-        <div className="text-center py-24 bg-card rounded-2xl border border-dashed">
-          <p className="text-lg text-muted-foreground">No posts found matching your criteria.</p>
-          <button 
-            onClick={() => { setSearchQuery(""); setSelectedTag(null); setSelectedPlatform(null); }}
-            className="mt-4 text-primary hover:underline font-medium"
-          >
-            Clear filters
-          </button>
-        </div>
-      ) : (
-        <div className="space-y-16">
-          {Object.entries(groupedPosts).map(([platform, platformPosts]) => (
-            <section key={platform}>
-              <div className="flex items-center gap-4 mb-8">
-                <h2 className="text-2xl font-bold tracking-tight">{platform}</h2>
-                <div className="h-px flex-1 bg-border"></div>
-                <span className="text-sm text-muted-foreground">{platformPosts.length} post{platformPosts.length !== 1 ? 's' : ''}</span>
+          {/* Right Column: Featured Mountain Showcase Card */}
+          <div className="lg:col-span-7 rounded-3xl bg-[#140e11] border border-[#23151b] p-8 sm:p-10 relative overflow-hidden flex flex-col justify-between min-h-[340px] shadow-2xl">
+            
+            {/* Mountain Graphic Background covering right/bottom */}
+            <div className="absolute inset-0 opacity-80 pointer-events-none">
+              <MountainGraphic className="w-full h-full" />
+            </div>
+
+            {/* Content over art */}
+            <div className="relative z-10 space-y-1">
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-white tracking-tight">
+                {activeCategory.name}
+              </h2>
+              <div className="text-xs font-mono text-[#9a8890]">
+                {activeCategory.count} {activeCategory.count === 1 ? "item" : "items"}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {platformPosts.map((post) => (
-                  <PostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          ))}
+            </div>
+
+            {/* Action button */}
+            <div className="relative z-10 pt-8">
+              <Link
+                href={`/security-blog/${activeCategory.slug}`}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#e8cec2] hover:bg-[#dfc4b7] text-[#0d080b] font-semibold text-sm transition-all shadow-lg"
+              >
+                View Articles
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+          </div>
+
         </div>
-      )}
+
+      </div>
     </div>
   )
 }

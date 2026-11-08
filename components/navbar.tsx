@@ -2,19 +2,19 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Shield, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useState } from "react"
-import { ThemeToggle } from "./theme-toggle"
 import { cn } from "@/lib/utils"
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "About Me", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
+  { name: "Custom Tools", href: "/tools" },
   { name: "Security Blog", href: "/security-blog" },
   { name: "Research", href: "/research" },
-  { name: "Tools", href: "/tools" },
+  { name: "Contact", href: "/contact" },
 ]
 
 export function Navbar() {
@@ -22,71 +22,87 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-1 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center space-x-2">
-              <Shield className="h-6 w-6 text-primary" />
-              <span className="font-bold sm:inline-block hidden">Ruwantha Harshamal</span>
-              <span className="font-bold sm:hidden inline-block">RH</span>
-            </Link>
-          </div>
+    <header className="sticky top-0 z-50 w-full bg-[#14171f]/90 backdrop-blur-md border-b border-[#2e364a]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="flex h-20 items-center justify-between">
+          {/* Brand Name & Subtitle */}
+          <Link href="/" className="flex flex-col group">
+            <span className="text-xl sm:text-2xl font-bold font-serif tracking-tight text-white group-hover:text-[#e2bf8d] transition-colors leading-tight">
+              Ruwantha Harshamal
+            </span>
+            <span className="text-[11px] text-[#9da6b8] tracking-wide mt-0.5">
+              Cybersecurity Engineer / Penetration Tester
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "transition-colors hover:text-foreground/80",
-                  pathname === item.href ? "text-foreground" : "text-foreground/60"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center gap-6 text-xs font-medium">
+            {navigation.map((item) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`)
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "relative py-2 transition-colors",
+                    isActive
+                      ? "text-white font-semibold"
+                      : "text-[#9da6b8] hover:text-white"
+                  )}
+                >
+                  {item.name}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#e2bf8d] rounded-full" />
+                  )}
+                </Link>
+              )
+            })}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            {/* Mobile Menu Toggle */}
-            <button
-              className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-foreground/60 hover:bg-accent hover:text-accent-foreground"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <span className="sr-only">Open main menu</span>
-              {mobileMenuOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden inline-flex items-center justify-center p-2 text-[#9da6b8] hover:text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="block h-6 w-6 text-[#e2bf8d]" />
+            ) : (
+              <Menu className="block h-6 w-6" />
+            )}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t">
-          <div className="space-y-1 px-4 pb-3 pt-2">
-            {navigation.map((item) => (
+        <div className="lg:hidden border-b border-[#2e364a] bg-[#1d222e] px-4 py-4 space-y-1.5">
+          {navigation.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(`${item.href}/`)
+
+            return (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block rounded-md px-3 py-2 text-base font-medium",
-                  pathname === item.href
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground/60 hover:bg-accent hover:text-accent-foreground"
+                  "block px-3 py-2.5 rounded-lg text-sm font-medium tracking-wide transition-colors",
+                  isActive
+                    ? "text-[#e2bf8d] bg-[#252b3b] border-l-2 border-[#e2bf8d]"
+                    : "text-[#9da6b8] hover:text-white hover:bg-[#252b3b]/60"
                 )}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
-            ))}
-          </div>
+            )
+          })}
         </div>
       )}
     </header>

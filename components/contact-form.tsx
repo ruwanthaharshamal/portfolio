@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Send } from "lucide-react"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -10,27 +10,24 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
+    await new Promise((resolve) => setTimeout(resolve, 900))
     setIsSubmitting(false)
     setSubmitted(true)
   }
 
   if (submitted) {
     return (
-      <div className="bg-card border rounded-2xl p-8 shadow-sm text-center animate-in fade-in zoom-in duration-300">
-        <div className="h-16 w-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-          <Send className="h-8 w-8" />
+      <div className="rounded-2xl bg-[#1d222e]/95 border border-[#2e364a] p-8 text-center space-y-4">
+        <div className="h-12 w-12 rounded-full bg-[#2a251d] border border-[#4f4230] text-[#e2bf8d] flex items-center justify-center mx-auto">
+          <CheckCircle2 className="h-6 w-6" />
         </div>
-        <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-        <p className="text-muted-foreground">
+        <h3 className="text-xl font-bold font-serif text-white">Message Sent</h3>
+        <p className="text-xs sm:text-sm text-[#d5dae6] max-w-md mx-auto">
           Thank you for reaching out. I&apos;ll get back to you as soon as possible.
         </p>
-        <button 
+        <button
           onClick={() => setSubmitted(false)}
-          className="mt-6 text-primary hover:underline font-medium"
+          className="text-xs font-mono text-[#e2bf8d] hover:underline pt-2"
         >
           Send another message
         </button>
@@ -39,46 +36,52 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-card border rounded-2xl p-8 shadow-sm">
-      <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium">Name</label>
-          <input 
+    <div className="space-y-4">
+      <h2 className="text-sm sm:text-base font-bold text-white">
+        Send a Message
+      </h2>
+
+      <form onSubmit={handleSubmit} className="space-y-3.5">
+        <div>
+          <input
             id="name"
+            name="name"
+            type="text"
             required
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            placeholder="John Doe"
+            placeholder="Name"
+            className="w-full px-4 py-3 rounded-lg bg-[#1d222e]/95 border border-[#2e364a] focus:border-[#e2bf8d] focus:outline-none text-xs sm:text-sm text-white placeholder:text-[#9da6b8] transition-colors"
           />
         </div>
-        
-        <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium">Email</label>
-          <input 
+
+        <div>
+          <input
             id="email"
+            name="email"
             type="email"
             required
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            placeholder="john@example.com"
+            placeholder="Email"
+            className="w-full px-4 py-3 rounded-lg bg-[#1d222e]/95 border border-[#2e364a] focus:border-[#e2bf8d] focus:outline-none text-xs sm:text-sm text-white placeholder:text-[#9da6b8] transition-colors"
           />
         </div>
-        
-        <div className="space-y-2">
-          <label htmlFor="message" className="text-sm font-medium">Message</label>
-          <textarea 
+
+        <div>
+          <textarea
             id="message"
+            name="message"
+            rows={5}
             required
-            className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            placeholder="How can I help you?"
+            placeholder="Message"
+            className="w-full px-4 py-3 rounded-lg bg-[#1d222e]/95 border border-[#2e364a] focus:border-[#e2bf8d] focus:outline-none text-xs sm:text-sm text-white placeholder:text-[#9da6b8] transition-colors resize-none"
           />
         </div>
-        
-        <button 
+
+        <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full mt-4"
+          className="w-full py-3.5 px-6 rounded-lg bg-[#e2bf8d] hover:bg-[#d4af7a] disabled:opacity-60 text-[#14171f] font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 transition-all shadow-lg"
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+          <ArrowRight className="h-4 w-4" />
         </button>
       </form>
     </div>
